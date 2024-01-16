@@ -35,7 +35,7 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
 - Validation des Restaurants : Approuver ou rejeter les soumissions de restaurants.
 
 
-   ``` Pour les Propriétaires de Restaurants  ```
+``` Pour les Propriétaires de Restaurants  ```
 
 - Inscription : S'inscrire pour créer un compte de propriétaire de restaurant.
 
@@ -50,7 +50,7 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
   https://github.com/ayaberhil/BESS-RESTO/assets/147451152/eb265837-7cc8-46f5-bd4a-d333a7a41223
 
 
-   ``` Pour les clients ```
+``` Pour les clients ```
 
 - Voir les Restaurants : Parcourir les restaurants avec la possibilité de voir des photos.
 
