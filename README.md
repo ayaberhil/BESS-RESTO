@@ -18,7 +18,9 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
 
 # Fonctionnalités
 
+
    ``` Pour les Administrateurs ```
+   
 
 - Gestion des Villes : Ajouter, modifier et supprimer des villes.
 
