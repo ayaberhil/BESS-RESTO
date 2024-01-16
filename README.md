@@ -62,6 +62,7 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
  # Lancement du Projet
  
 - Vous pouvez faire le clone du projet:  ``` git clone ``` https://github.com/ayaberhil/TP_SpringBoot.git , puis lancez-le
+- Ouvrez http://localhost:9097 pour visualisation dans votre navigateur. La page se rechargera automatiquement lorsque vous apportez des modifications.
 - Créer une base de données nommée : ``` projet ```
 - Pour le compte par défaut administrateur, username : ```admin@admin``` , password : ```admin@admin```
 - Pour le compte par défaut propriétaire, username : ```owner@owner``` , password : ```owner@owner```
@@ -84,11 +85,6 @@ Exécute l'application en mode développement. Ouvrez http://localhost:3000 pour
 
 ``` npm run build ```
 Construit l'application pour la production dans le dossier build. Elle optimise React en mode production pour de meilleures performances. Le build est minifié, et les noms de fichiers incluent les hachages. Votre application est prête à être déployée !
-
-
-
-
-
 
 
 
