@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Spécialités</title>
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <style>
+            body {
+              padding-top: 56px;
+              margin-bottom: 60px;
+              background-color: #f8f9fa; 
+          }
+  
+          .container-fluid {
+              padding: 20px;
+          }
+  
+          .card {
+              border: none;
+              border-radius: 10px;
+          }
+  
+          main {
+              margin-left: 240px;
+          }
+  
+          .sidebar {
+              position: fixed;
+              top: 56px;
+              bottom: 0;
+              left: 0;
+              z-index: 1000;
+              padding: 20px;
+              overflow-x: hidden;
+              overflow-y: auto;
+              background-color: #f8f9fa; 
+          }
+  
+          .sidebar-footer {
+              padding: 10px;
+              text-align: center;
+              position: fixed;
+              bottom: 0;
+              left: 0;
+              width: 240px;
+              background-color: rgb(212, 71, 5);
+              color: black;
+          }
+  
+          main {
+              margin-left: 240px;
+          }
+  
+          .card-color {
+              background-color: #37383a;
+              color: #fff;
+          }
+  
+          .table-responsive {
+              border: 1px solid #dee2e6;
+              margin: 15px 0;
+              border-radius: 5px;
+          }
+  
+          .btn-success,
+          .btn-warning {
+              margin-right: 5px;
+          }
+  
+          .footer {
+              position: fixed;
+              bottom: 0;
+              width: 100%;
+              background-color: #343a40; 
+              color: #fff; 
+              text-align: center;
+              padding: 10px;
+          }
+      </style>
+    </head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand" href="#">Gestion des Specialités</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/admin/restaurant">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/ville">Villes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/serie">Series</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/specialite">Specialités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/zone">Zones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/restaurant">Restaurants</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mx-auto">
+                <h2>Ajouter une Nouvelle Spécialité</h2>
+                <form th:action="@{/admin/saveSpecialite}" method="post">
+                    <div class="form-group">
+                        <label for="nomSpecialite">Nom de la Spécialité:</label>
+                        <input type="text" class="form-control" id="nomSpecialite" name="nom" required />
+                    </div>
+                    <button type="submit" class="btn btn-success">Ajouter</button>
+                </form>
+
+                <h2>Liste des Spécialités</h2>
+
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="specialite : ${specialites}">
+                            <td th:text="${specialite.id}"></td>
+                            <td th:text="${specialite.nom}"></td>
+                            <td><button class="btn btn-primary btn-sm" data-toggle="modal"
+												th:attr="data-target=${'#editSpecialite'+specialite.id}"
+												data-row="${specialites}">Modifier</button>
+
+											<div class="modal fade" th:attr="id=${'editSpecialite' + specialite.id}"
+												data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+												<div class="modal-dialog">
+													<div class="modal-content">
+														<div class="modal-header">
+															<h5 class="modal-title" id="staticBackdropLabel">
+																Modifier
+															</h5>
+															<button type="button" class="btn-close"
+																data-bs-dismiss="modal" aria-label="Close"></button>
+														</div>
+														<div class="modal-body">
+															<form class="form"
+																th:action="@{/admin/editSpecialite/{id}(id=${specialite.id})}" method="post">
+																<div class="col-sm-6 mb-2">
+																	<label for="nom">Nom : </label>
+																	<input class="form-control" type="text" id="nom"
+																		name="nom" th:value="${specialite.nom}" required>
+																</div>
+																<button class="btn btn-block btn-success"
+																	type="submit">Modifier</button>
+															</form>
+														</div>
+														<div class="modal-footer">
+                                                            <a class="btn btn-secondary btn-sm" th:href="@{/admin/specialite}">Cancel</a>
+                                                        </div>
+                                                        
+													</div>
+												</div>
+											</div>
+											
+                                <a class="btn btn-danger" th:href="@{/admin/deleteSpecialite/{id}(id=${specialite.id})}"
+                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette spécialité ?')">Supprimer</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+        <footer class="footer">
+            <div class="container text-center">
+                <p class="mb-0">Ⓒ Berhil Aya  &   Essaoulajy Manal</p>
+            </div>
+        </footer>
+
+</body>
+
+</html>

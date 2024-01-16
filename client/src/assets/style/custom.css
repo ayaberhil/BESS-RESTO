@@ -1,0 +1,30 @@
+.nav-btn {
+    background-color: rgb(92, 101, 154);
+    margin: 2px;
+    padding: 0.5rem;
+    border-radius: 50px;
+}
+
+.nav-btn:hover {
+    background-color: rgba(235, 231, 229, 0.674);
+}
+
+.nav-link{
+    font-weight: 700;
+    font-size: medium;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-orange {
+    border-color:rgb(126, 129, 221) ;
+    background-color: antiquewhite;
+    margin-right: 3px;
+}

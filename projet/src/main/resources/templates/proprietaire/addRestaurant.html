@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un Restaurant</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <style>
+            body {
+              padding-top: 56px;
+              margin-bottom: 60px;
+              background-color: #f8f9fa; 
+          }
+  
+          .container-fluid {
+              padding: 20px;
+          }
+  
+          .card {
+              border: none;
+              border-radius: 10px;
+          }
+  
+          main {
+              margin-left: 240px;
+          }
+  
+          .sidebar {
+              position: fixed;
+              top: 56px;
+              bottom: 0;
+              left: 0;
+              z-index: 1000;
+              padding: 20px;
+              overflow-x: hidden;
+              overflow-y: auto;
+              background-color: #f8f9fa; 
+          }
+  
+          .sidebar-footer {
+              padding: 10px;
+              text-align: center;
+              position: fixed;
+              bottom: 0;
+              left: 0;
+              width: 240px;
+              background-color: rgb(212, 71, 5);
+              color: black;
+          }
+  
+          main {
+              margin-left: 240px; 
+          }
+  
+          .card-color {
+              background-color: #37383a;
+              color: #fff;
+          }
+  
+          .table-responsive {
+              border: 1px solid #dee2e6;
+              margin: 15px 0;
+              border-radius: 5px;
+          }
+  
+          .btn-success,
+          .btn-warning {
+              margin-right: 5px;
+          }
+  
+          .footer {
+              position: fixed;
+              bottom: 0;
+              width: 100%;
+              background-color: #343a40; 
+              color: #fff; 
+              text-align: center;
+              padding: 10px;
+          }
+      </style>
+    </head>
+
+<body>
+
+    <div class="container-fluid mx-auto">
+        <div class="row">
+
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand" href="#">Ajouter des restaurants</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                       
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                            <ul class="navbar-nav ml-auto">
+                                
+						<li class="nav-item">
+                            <a class="nav-link" href="/proprietaire/index">
+                                Mes Restaurants
+                            </a>
+                        </li>
+						<li class="nav-item text-center">
+                            <a class="nav-link" href="/proprietaire/addRestaurant">
+                                Ajouter un Restaurant
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Déconnexion</a>
+                        </li>
+                  
+                    </ul>
+                </div>
+				
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mx-auto">
+                <h2>Ajouter un Nouveau Restaurant</h2>
+                <form th:action="@{/proprietaire/addRestaurant}" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                           
+                            <div class="form-group">
+                                <label for="nom">Nom:</label>
+                                <input type="text" class="form-control" id="nom" name="nom" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="adresse">Adresse:</label>
+                                <input type="text" class="form-control" id="adresse" name="adresse" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="lati">Latitude:</label>
+                                <input type="text" class="form-control" id="lati" name="lati" />
+                            </div>
+                            <div class="form-group">
+                                <label for="longi">Longitude:</label>
+                                <input type="text" class="form-control" id="longi" name="longi" />
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label for="lat" class="col-sm-2 col-form-label">Specialités</label>
+                                    <div class="col-sm-10">
+                                        <select name="speciality" class="form-control" id="serie">
+                                        <option selected>Choisir specialite</option>
+                                            <option th:each="specialitie: ${specialities}" th:text="${specialitie.nom}"
+                                                th:value="${specialitie.id}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="image" class="col-sm-2 col-form-label">Image : </label>
+                               
+                                    <input class="form-control" name="photos" type="file" id="image" multiple>
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="rank">Rank:</label>
+                                <input type="text" class="form-control" id="rank" name="rank" />
+                            </div>
+                            <div class="form-group">
+                                <label for="hourop">Heure d'ouverture:</label>
+                                <input type="time" class="form-control" id="hourop" name="hourop" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="hourcl">Heure de fermeture:</label>
+                                <input type="time" class="form-control" id="hourcl" name="hourcl" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="serie">Serie:</label>
+                                <select class="form-control" id="serie" name="serie" required>
+                                    <option th:each="s : ${series}" th:value="${s.id}" th:text="${s.nom}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="zone">Zone:</label>
+                                <select class="form-control" id="zone" name="zone" required>
+                                    <option th:each="z : ${zones}" th:value="${z.id}" th:text="${z.nom}"></option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="ville">Ville:</label>
+                                <select class="form-control" id="ville" name="ville" required>
+                                    <option th:each="v : ${villes}" th:value="${v.id}" th:text="${v.nom}"></option>
+                                </select>
+                            </div>
+                           
+                        </div>
+                    </div>
+                   
+                    <button type="submit" class="btn btn-success">Ajouter Restaurant</button>
+                </form>
+            </main>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+     
+        <footer class="footer">
+            <div class="container text-center">
+                <p class="mb-0">Ⓒ Berhil Aya  &   Essaoulajy Manal</p>
+            </div>
+        </footer>
+</body>
+
+</html>

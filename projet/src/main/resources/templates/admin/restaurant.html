@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Séries</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+          body {
+            padding-top: 56px;
+            margin-bottom: 60px;
+            background-color: #f8f9fa; 
+        }
+
+        .container-fluid {
+            padding: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+        }
+
+        main {
+            margin-left: 240px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 56px;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            padding: 20px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+        }
+
+        .sidebar-footer {
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 240px;
+            background-color: rgb(212, 71, 5);
+            color: black;
+        }
+
+        main {
+            margin-left: 240px;
+        }
+
+        .card-color {
+            background-color: #37383a;
+            color: #fff;
+        }
+
+        .table-responsive {
+            border: 1px solid #dee2e6;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .btn-success,
+        .btn-warning {
+            margin-right: 5px;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #343a40; 
+            color: #fff; 
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid mx-auto">
+        <div class="row">
+
+  
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+                <a class="navbar-brand" href="#">Gestion des restaurants</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/admin/restaurant">Accueil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/ville">Villes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/serie">Series</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/specialite">Specialités</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/zone">Zones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/restaurant">Restaurants</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Déconnexion</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 mx-auto">
+   
+                <div class="container-fluid">
+                    <div class="modal fade" id="error" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Erreur</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Impossible de supprimer cette restaurant</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card bg-white">
+                        <div class="card-header card-color">
+                            <p class="h2 text-center text-uppercase font-weight-bold pt-2">Validation des restaurants
+                            </p>
+                        </div>
+
+                        <div class="card-body container-fluid">
+                            <div class="row table-responsive m-3 rounded">
+                                <table id="trestaurant" class="table table-hover w-100">
+                                    <thead>
+                                        <tr class="text-uppercase bg-light  w-100">
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Photos</th>
+                                            <th scope="col">Nom</th>
+                                            <th scope="col">Adresse</th>
+                                            <th scope="col">rank</th>
+                                            <th scope="col">ouvrerture</th>
+                                            <th scope="col">fermeture</th>
+                                            <th scope="col">serie</th>
+                                            <th scope="col">ville</th>
+                                            <th scope="col">zone</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table-content">
+                                        <tr th:each="restaurant : ${restaurants}">
+                                            <td th:text="${restaurant.id}"></td>
+                                            <td>
+                                                <div id="carouselExampleControls" class="carousel slide"
+                                                    data-bs-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        <div class="carousel-item active"
+                                                            th:each="image : ${restaurant.photos}">
+                                                            <img th:src="${'data:image/jpeg;base64,'+{image.image}}"
+                                                                class="d-block" height="70px" width="70px" alt="..." />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td th:text="${restaurant.nom}"></td>
+                                            <td th:text="${restaurant.adresse}"></td>
+                                            <td th:text="${restaurant.rank}"></td>
+                                            <td th:text="${restaurant.hourop}"></td>
+                                            <td th:text="${restaurant.hourcl}"></td>
+                                            <td th:text="${restaurant.serie.nom}"></td>
+                                            <td th:text="${restaurant.zone.ville.nom}"></td>
+                                            <td th:text="${restaurant.zone.nom}"></td>
+                                            <td>
+                                                <a th:href="@{/admin/validateRestaurant/{id}(id=${restaurant.id})}"
+                                                    type="button" class="btn btn-success btn-sm"
+                                                    th:if="${restaurant.etat.nom == 'EN_COURS' or  restaurant.etat.nom == 'NON_VALIDE' }">Valider</a>
+                                                <a th:href="@{/admin/unvalidateRestaurant/{id}(id=${restaurant.id})}"
+                                                    type="button" class="btn btn-warning btn-sm"
+                                                    th:if="${restaurant.etat.nom == 'VALIDE' }">Invalider</a>
+
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+  
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">Ⓒ Berhil Aya  &   Essaoulajy Manal</p>
+        </div>
+    </footer>
+</body>
+
+</html>
