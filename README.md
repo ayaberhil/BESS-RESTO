@@ -85,7 +85,7 @@ SonarQube est un outil précieux pour maintenir un code source de haute qualité
 
 
 
-# Démmarage avec React :
+# Démmarage avec React 
 
 Ce projet a été initialisé avec Create React App, offrant une configuration simplifiée pour les applications React.
 
