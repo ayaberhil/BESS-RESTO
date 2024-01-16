@@ -87,7 +87,7 @@ Construit l'application pour la production dans le dossier build. Elle optimise 
 Ce projet a été développé par :
 
 - BERHIL Aya
-- Essaoulajy Manal
+- ESSAOULAJY Manal
 
 
  # Set Up
