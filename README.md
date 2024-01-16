@@ -16,6 +16,11 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
 
 - Leaflet : Bibliothèque JavaScript pour les cartes interactives, utilisée pour le traitement des fonctionnalités liées à la carte.
 
+
+# Architecture Générale de l'Application
+
+
+
 # Fonctionnalités
 
 
