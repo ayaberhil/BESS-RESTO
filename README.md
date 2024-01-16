@@ -45,6 +45,9 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
 
 - Ajouter des Photos de Restaurant : Télécharger et gérer des photos pour un restaurant.
 
+  https://github.com/ayaberhil/BESS-RESTO/assets/147451152/eb265837-7cc8-46f5-bd4a-d333a7a41223
+
+
 # Pour les clients :
 
 - Voir les Restaurants : Parcourir les restaurants avec la possibilité de voir des photos.
@@ -52,6 +55,9 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
 - Fonction de Recherche : Rechercher des restaurants par ville, zone, spécialité ou série.
 
 - Intégration de la Carte : Visualiser les emplacements des restaurants et la position de l'utilisateur sur la carte.
+
+  https://github.com/ayaberhil/BESS-RESTO/assets/147451152/be900043-e785-476e-bff8-9378806f9eb5
+
 
 
 # Démmarage avec React :
