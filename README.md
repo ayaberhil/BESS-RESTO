@@ -59,6 +59,15 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
   https://github.com/ayaberhil/BESS-RESTO/assets/147451152/be900043-e785-476e-bff8-9378806f9eb5
 
 
+ # Lancement du Projet
+ 
+- Vous pouvez faire le clone du projet:  ``` git clone ``` https://github.com/ayaberhil/TP_SpringBoot.git , puis lancez-le
+- Créer une base de données nommée : ``` projet ```
+- Pour le compte par défaut administrateur, username : admin@admin , password : admin@admin
+- Pour le compte par défaut propriétaire, username : owner@owner , password : owner@owner
+
+
+
 
 # Démmarage avec React :
 
@@ -89,9 +98,6 @@ Ce projet a été développé par :
 - BERHIL Aya
 - ESSAOULAJY Manal
 
-
- # Set Up
-Vous pouvez faire le clone du projet, et lancez-le à partir de : https://github.com/ayaberhil/TP_SpringBoot.git
 
 # Licence
 Ce projet est sous licence MIT.
