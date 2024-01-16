@@ -62,8 +62,8 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
  # Lancement du Projet
  
 - Vous pouvez faire le clone du projet:  ``` git clone ``` https://github.com/ayaberhil/TP_SpringBoot.git , puis lancez-le
-- Ouvrez http://localhost:9097 pour visualisation dans votre navigateur. La page se rechargera automatiquement lorsque vous apportez des modifications.
 - Créer une base de données nommée : ``` projet ```
+- Ouvrez http://localhost:9097 pour visualisation dans votre navigateur. La page se rechargera automatiquement lorsque vous apportez des modifications.
 - Pour le compte par défaut administrateur, username : ```admin@admin``` , password : ```admin@admin```
 - Pour le compte par défaut propriétaire, username : ```owner@owner``` , password : ```owner@owner```
 
