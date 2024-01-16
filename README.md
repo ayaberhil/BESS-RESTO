@@ -60,6 +60,13 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
 
   https://github.com/ayaberhil/BESS-RESTO/assets/147451152/be900043-e785-476e-bff8-9378806f9eb5
 
+ # SoraQube
+
+SonarQube est un outil précieux pour maintenir un code source de haute qualité tout au long du cycle de vie d'un projet logiciel.
+ 
+![sonar](https://github.com/ayaberhil/BESS-RESTO/assets/147451152/cc57e9f5-edfe-449b-a2fc-7cb7ed9101f9)
+
+
 
  # Lancement du Projet
  
