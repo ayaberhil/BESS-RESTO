@@ -86,12 +86,12 @@ Construit l'application pour la production dans le dossier build. Elle optimise 
 # Auteurs
 Ce projet a été développé par :
 
-- BEHIL Aya
+- BERHIL Aya
 - Essaoulajy Manal
 
 
  # Set Up
-Vous pouvez faire le clone du projet, et lancez-le : https://github.com/ayaberhil/TP_SpringBoot.git
+Vous pouvez faire le clone du projet, et lancez-le à partir de : https://github.com/ayaberhil/TP_SpringBoot.git
 
 # Licence
 Ce projet est sous licence MIT.
