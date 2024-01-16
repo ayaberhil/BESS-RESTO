@@ -52,7 +52,7 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
 
 - Voir les Restaurants : Parcourir les restaurants avec la possibilité de voir des photos.
 
-- Fonction de Recherche : Rechercher des restaurants par ville, zone, spécialité ou série.
+- Fonction de Recherche : Rechercher des restaurants par ville et zone.
 
 - Intégration de la Carte : Visualiser les emplacements des restaurants et la position de l'utilisateur sur la carte.
 
