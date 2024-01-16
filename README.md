@@ -19,6 +19,8 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
 
 # Architecture Générale de l'Application
 
+![arch_final](https://github.com/ayaberhil/BESS-RESTO/assets/147451152/88421606-5df4-459b-9745-1d0fcedc159a)
+
 
 
 # Fonctionnalités
