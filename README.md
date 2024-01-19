@@ -17,10 +17,6 @@ Ce projet vise à concevoir et mettre en œuvre une application web pour localis
 - Leaflet : Bibliothèque JavaScript pour les cartes interactives, utilisée pour le traitement des fonctionnalités liées à la carte.
 
 
-# Architecture Générale de l'Application
-
-
-![arch_ff](https://github.com/ayaberhil/BESS-RESTO/assets/147451152/847a55bb-80e5-4e9f-a7f9-d40e41e89385)
 
 
 
